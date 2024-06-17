@@ -2,13 +2,13 @@
 Basics of GraphQL Setup and Query
 
 
-Install:
+# Initial install:
 npm i express
 
-# Present that will compile the code from latest version of Javascript for running the code in the browser.
+Present that will compile the code from latest version of Javascript for running the code in the browser.
 npm i --save-dev @babel/cli @babel/core @babel/node @babel/preset-env
 
-# nodemon - Any change in code automatically refreshes the server.
+nodemon - Any change in code automatically refreshes the server.
 npm i nodemon
     rs: restart/refresh the server
 
@@ -22,3 +22,13 @@ Start the project:
 
     2. Got to the browser and hit http://localhost:8085/
         It must show "GraphQL is amazing!"
+
+
+#Test in browser using GraphiQL
+
+<img width="806" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/01f314fb-bf38-47d0-b48f-84cd57801461">
+
+    query {
+    	hello  
+    }
+
