@@ -81,8 +81,30 @@ Run mutation query:
 
 <img width="714" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/8e53ec31-82bf-45ac-8fda-be4d3fcf66ea">
 
+
+
 Check Mondo collections and it will populate:
 <img width="1266" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/f4197b88-5f54-42a0-acf2-d9798075989d">
 
 
-
+**Create Product:**
+<img width="721" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/818f840d-066c-43ad-9a1c-e0465c3e1e7d">
+Request:
+        mutation {
+          createProduct(input:{
+            name: "Widget 23",
+            description: "Another widget 23",
+            price: 40.99,
+            soldout: ONSALE,
+            stores: [
+              {store: "Delhi"},
+              {store: "Los Angeles"}
+            ]
+          }) {
+            price
+            name
+            description
+            id
+          	soldout
+          }
+        }
