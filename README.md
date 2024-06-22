@@ -108,3 +108,88 @@ Request:
           	soldout
           }
         }
+
+    Check created product in Mongo:
+    <img width="1070" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/280096ae-4aa0-420a-92d8-b54536a27d9a">
+
+
+**Update a product**
+mutation {
+  updateProduct(input:{
+    id: "6670294361c1aaecb40a18da"
+    description: "Another widget for iPhone15",
+    price: 12.99,
+    stores: [
+      {store: "Delhi"},
+      {store: "Los Angeles"},
+      {store: "Toronto"}
+    ]
+  }) {
+    price
+    name
+    description
+    id
+  	soldout
+  }
+}
+<img width="707" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/4c5d72c5-6722-4505-9c50-b75d64f0f98b">
+<img width="1154" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/664ea26d-191c-4341-a463-56d5fd7220a2">
+
+
+**Delete product/data in MongoDB**
+Example removing duplicate record:
+    mutation {
+      deleteProduct(id: "6676d0a79f14933e776b62e3")
+    }
+    Before:
+        <img width="888" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/10a1a72a-debd-4479-93d0-af97d41ce5d1">
+        <img width="732" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/f2575099-374d-4650-aa4c-0d3489a70280">
+    After execution:
+        <img width="878" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/4e200aec-1581-48a4-842d-ac969322d3b4">
+
+
+**Get all products list**
+query {
+  getAllProducts {
+    name
+    price
+    inventory
+  }
+}
+<img width="684" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/cfbe7e22-4941-494b-b254-bbae317a4a43">
+
+
+**GraphQL aliases for specific product search**
+query {
+  widgetOne: getProduct(id: "6670294361c1aaecb40a18da") {
+    name
+    description
+    soldout
+  }
+  widgetTwo: getProduct(id: "6676ceca8875fa4a0030743c") {
+    name
+    description
+    inventory
+    soldout
+  }
+}
+<img width="706" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/99af19db-a3be-49cd-95d8-b5d5ecc1a2a7">
+
+**GraphQL Fragment**
+    query {
+      widgetOne: getProduct(id: "6670294361c1aaecb40a18da") {
+        ...productFragment
+      }
+      widgetTwo: getProduct(id: "6676ceca8875fa4a0030743c") {
+        ...productFragment
+        inventory
+      }
+    }
+    
+    fragment productFragment on Product {
+      name
+      description
+      soldout
+    }
+    <img width="696" alt="image" src="https://github.com/pollenshukla/graphql/assets/28946768/d00f2332-c357-447d-9c49-e660e94f2119">
+
