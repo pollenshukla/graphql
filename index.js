@@ -3,6 +3,7 @@
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql'
 import schema from './data/schema'
+import resolvers from './data/resolvers'
 
 const PORT = 8085;
 
@@ -12,9 +13,7 @@ app.get('/', (req, res) => {
    res.send('GraphQL is amazing');
 });
 
-// Define the responses from the GraphQL server.
-// This is a resolver/functions that resolves the request and sends response back to the client.
-const root = { hello: () => "Hi, I'm Pollen!" };
+const root = resolvers;
 
 // GraphQL server
 app.use('/graphql', graphqlHTTP({
