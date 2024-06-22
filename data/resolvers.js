@@ -27,7 +27,31 @@ const resolvers = {
             await newWidget.save();
             return newWidget;
         } catch (error) {
+            throw new Error(error);
+        }
+    },
+    getAllProducts: async () => {
+        try {
+            return await Widgets.find({});
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
+    updateProduct: async ({ input }) => {
+        try {
+            // Update product as per the { input } or create a new product if { input } doesn't exists.
+            const updateWidget = await Widgets.findOneAndUpdate({ _id: input.id}, input, { new: true});
+            return updateWidget;
+        } catch (error) {
             throw new error(error);
+        }
+    },
+    deleteProduct: async ({ id }) => {
+        try {
+            await Widgets.deleteOne({ _id: id });
+            return "Status of deletion: Success";
+        } catch (error) {
+            throw new Error(error);
         }
     }
 }
